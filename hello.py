@@ -1,3 +1,6 @@
+"""Example for using the API Generator"""
+
+
 import webapp2
 import models
 from google.appengine.api import users
@@ -99,25 +102,6 @@ class TaskRequest(webapp2.RequestHandler):
         else:
             self.response.set_status(200)
 
-
-class DoStuffForDebug(webapp2.RequestHandler):
-    """Its useful for me to have a URL like this during Development"""
-    def get(self):
-
-        task = models.Task()
-        task.user_id = "wesley@gmail.com"
-        task.project_name = "Time Keeper Application"
-        task.current_task_note = "Create DB Model Customer"
-        task.task_name = "Build API for Customers"
-        task.put()
-
-        task1 = models.Task()
-        task1.user_id = "wesley@gmail.com"
-        task1.project_name = "Time Keeper Application"
-        task1.current_task_note = "Create DB Model User"
-        task1.task_name = "Build API for User"
-        task1.put()
-        self.response.out.write("Success!")
 
 class Logout(webapp2.RequestHandler):
     def get(self):
